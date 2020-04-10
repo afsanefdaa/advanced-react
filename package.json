@@ -7,10 +7,20 @@
   "author": "Afsane Fadaei",
   "license": "MIT",
   "private": true,
-  "_comments": ["used pm2 for hotreloading instead of nodemon"],
+  "_comments": [
+    "used pm2 for hotreloading instead of nodemon",
+    "--interpreter babel-node is for telling pm2 to use babel-node instead of normal node"
+  ],
   "scripts": {
-    "dev": "pm2 start lib/server.js --watch",
+    "dev": "pm2 start lib/server.js --watch --interpreter babel-node",
     "pm2:logs": "pm2 logs"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "env",
+      "stage-2"
+    ]
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -18,6 +28,10 @@
     "eslint-plugin-react": "^7.19.0"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
     "pm2": "^4.2.3"
