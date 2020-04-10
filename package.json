@@ -7,6 +7,11 @@
   "author": "Afsane Fadaei",
   "license": "MIT",
   "private": true,
+  "_comments": ["used pm2 for hotreloading instead of nodemon"],
+  "scripts": {
+    "dev": "pm2 start lib/server.js --watch",
+    "pm2:logs": "pm2 logs"
+  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
@@ -14,6 +19,7 @@
   },
   "dependencies": {
     "ejs": "^3.0.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pm2": "^4.2.3"
   }
 }
