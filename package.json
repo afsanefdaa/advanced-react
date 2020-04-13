@@ -2,39 +2,33 @@
   "name": "advanced-react",
   "version": "1.0.0",
   "description": "Advanced React From Scratch",
-  "main": "lib/server.js",
+  "main": "src/server.js",
   "repository": "https://github.com/afsanefda/advanced-react",
   "author": "Afsane Fadaei",
   "license": "MIT",
   "private": true,
-  "_comments": [
-    "used pm2 for hotreloading instead of nodemon",
-    "--interpreter babel-node is for telling pm2 to use babel-node instead of normal node"
-  ],
   "scripts": {
-    "dev": "pm2 start lib/server.js --watch --interpreter babel-node",
-    "pm2:logs": "pm2 logs"
-  },
-  "babel": {
-    "presets": [
-      "react",
-      "env",
-      "stage-2"
-    ]
+    "dev": "nodemon --exec babel-node --watch src src/server.js",
+    "predev": "webpack --mode development"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0"
+    "eslint-plugin-react": "^7.19.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/node": "^7.8.7",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
-    "pm2": "^4.2.3",
+    "nodemon": "^2.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
