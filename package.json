@@ -32,8 +32,11 @@
     "axios": "^0.19.2",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "jest": "^25.3.0",
     "nodemon": "^2.0.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "styled-components": "^5.1.0"
   }
 }

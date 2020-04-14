@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test of article list should render correctly 1`] = `
+<div>
+  <div
+    className="sc-AxjAm buwshB"
+  >
+    <span
+      className="sc-AxirZ cysuWk"
+    >
+      title a
+    </span>
+    <span
+      className="sc-AxiKw dnkZXQ"
+    >
+      date a
+    </span>
+    <div
+      className="sc-AxhCb jtmMmi"
+    >
+      <a>
+        a a
+      </a>
+    </div>
+    <span
+      className="sc-AxhUy hDqVax"
+    >
+      body a
+    </span>
+  </div>
+  <div
+    className="sc-AxjAm buwshB"
+  >
+    <span
+      className="sc-AxirZ cysuWk"
+    >
+      title b
+    </span>
+    <span
+      className="sc-AxiKw dnkZXQ"
+    >
+      date b
+    </span>
+    <div
+      className="sc-AxhCb jtmMmi"
+    >
+      <a>
+        b b
+      </a>
+    </div>
+    <span
+      className="sc-AxhUy hDqVax"
+    >
+      body b
+    </span>
+  </div>
+</div>
+`;

@@ -1,7 +1,7 @@
 export default class DataApiInterface {
   /* get the raw data from api */
   constructor(rawData) {
-    this.rawData = rawData;
+    this.rawData = rawData.data;
   }
 
   mapIntoObject(arr) {
