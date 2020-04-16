@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import ArticleList from './ArticleList';
 
 class Home extends Component {
-  state = {
-    articles: this.props.initialProps.articles,
-    authors: this.props.initialProps.authors,
-  };
+  /* have to read state from store from now on */
+  state = this.props.store.getState();
 
   render() {
-    const {articles, authors} = this.state;
-    return <ArticleList articles={articles} authors={authors}/>;
+    const {articles} = this.state;
+    return <ArticleList articles={articles} store={this.props.store}/>;
   }
 }
 

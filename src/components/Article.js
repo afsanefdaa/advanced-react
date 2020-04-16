@@ -7,7 +7,9 @@ import {
   Description
 } from './styles';
 
-const Article = ({article, author}) => {
+const Article = ({article, store}) => {
+  const author = store.lookupAuthor(article.authorId);
+
   return (
     <FlexArticle>
       <Title>{article.title}</Title>

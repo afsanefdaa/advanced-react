@@ -1,12 +1,12 @@
 /* unit test of data interface */
-import DataApiInterface from 'api';
+import StateApi from 'api';
 import data from '../data';
 
-const api = new DataApiInterface(data);
+const store = new StateApi(data);
 
 describe('DataApiInterface', () => {
   it('should expose articles as an object',  () => {
-    const articles = api.getArticles();
+    const articles = store.getState().articles;
     const articleId = data.data.articles[0].id;
     const articleTitle = data.data.articles[0].title;
 
@@ -15,7 +15,7 @@ describe('DataApiInterface', () => {
   });
 
   it('should expose authors as an object',  () => {
-    const authors = api.getAuthors();
+    const authors = store.getState().authors;
     const authorId = data.data.authors[0].id;
     const authorName = data.data.authors[0].firstName;
 

@@ -11,13 +11,8 @@ describe('snapshot test of article list', ()=> {
       a: { id: 'a', title: 'title a', date: 'date a', body: 'body a', authorId: 'a' },
       b: { id: 'b', title: 'title b', date: 'date b', body: 'body b', authorId: 'b' },
     },
-    authors: {
-      a: {
-        firstName: 'a', lastName: 'a'
-      },
-      b: {
-        firstName: 'b', lastName: 'b'
-      }
+    store: {
+      lookupAuthor: jest.fn(()=> ({}))
     }
   };
 

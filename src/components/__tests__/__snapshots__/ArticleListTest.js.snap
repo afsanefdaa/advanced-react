@@ -19,7 +19,7 @@ exports[`snapshot test of article list should render correctly 1`] = `
       className="sc-AxhCb jtmMmi"
     >
       <a>
-        a a
+        undefined undefined
       </a>
     </div>
     <span
@@ -45,7 +45,7 @@ exports[`snapshot test of article list should render correctly 1`] = `
       className="sc-AxhCb jtmMmi"
     >
       <a>
-        b b
+        undefined undefined
       </a>
     </div>
     <span
