@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import data from './../api/data';
-import DataApiInterface from '../api/DataApiInterface';
+import data from '../api-data/data';
+import DataApiInterface from 'api';
 import ArticleList from './ArticleList';
 
 const api = new DataApiInterface(data);

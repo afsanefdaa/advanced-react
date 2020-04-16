@@ -1,6 +1,6 @@
 /* unit test of data interface */
-import DataApiInterface from '../DataApiInterface';
-import data from './../data';
+import DataApiInterface from 'api';
+import data from '../data';
 
 const api = new DataApiInterface(data);
 
