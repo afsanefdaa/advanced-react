@@ -6,9 +6,13 @@
     <title>The HTML5 Herald</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="Afsane Fadaei">
+    <script type="text/javascript">
+        /* we get the api data in ssr and passed in in view and store it in window object - global var */
+        window.initialProps = <%- JSON.stringify(initialProps) -%>
+    </script>
 </head>
 <body>
-<div id="root"><%- initialContent -%></div>
+<div id="root"><%- initialMarkup -%></div>
 <script src="bundle.js" charset="utf-8"></script>
 </body>
 </html>
