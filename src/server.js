@@ -1,6 +1,6 @@
 import express from 'express'; /* for using imports in server side babel is needed */
 import config from './config'; /* entry point is server file */
-import serverRender from './serverRender';
+import serverRender from 'renderers/server';
 
 const app = express();  /* initialize an express application */
 

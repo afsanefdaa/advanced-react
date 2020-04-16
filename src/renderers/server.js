@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-
-import Home from './components/Home';
+import Home from 'components/Home';
 
 const sheet = new ServerStyleSheet();
 

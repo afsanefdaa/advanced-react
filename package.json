@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js",
+    "dev": "NODE_PATH=./src nodemon --exec babel-node src/server.js",
     "webpack": "webpack -wd",
     "test": "jest --watch"
   },
