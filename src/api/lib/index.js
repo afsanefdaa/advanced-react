@@ -13,6 +13,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) {_
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/* before transpile into pure js the code below */
 let StateApi = /*#__PURE__*/function () {
   /* get the raw data from api */
   function StateApi(rawData) {
@@ -28,12 +29,38 @@ let StateApi = /*#__PURE__*/function () {
       return _this.data;
     });
 
+    _defineProperty(this, 'subscribe', (cb) => {
+      _this.lastSubscriptionId++;
+      _this.subscriptions[_this.lastSubscriptionId] = cb;
+      return _this.lastSubscriptionId;
+      /* we return so that we could use it in unsubscribe */
+    });
+
+    _defineProperty(this, 'unsubscribe', (subscriptionId) => {
+      delete _this.subscriptions[subscriptionId];
+    });
+
+    _defineProperty(this, 'notifySubscribers', () => {
+      Object.values(_this.subscriptions).forEach((cb) => {
+        return cb();
+      });
+    });
+
+    _defineProperty(this, 'setSearchQuery', (query) => {
+      /* when we change this only the query updates we need to update the articles but as long as it is in constructor it needs subscription functions */
+      _this.data.query = query;
+
+      _this.notifySubscribers();
+    });
+
     /* to avoid calling on and on we will call it once */
     this.data = {
       articles: this.mapIntoObject(rawData.data.articles),
       authors: this.mapIntoObject(rawData.data.authors),
       query: ''
     };
+    this.subscriptions = {};
+    this.lastSubscriptionId = 0;
   }
 
   _createClass(StateApi, [{
@@ -62,6 +89,8 @@ exports.default = StateApi;
 //       authors: this.mapIntoObject(rawData.data.authors),
 //       query: '',
 //     };
+//     this.subscriptions = {};
+//     this.lastSubscriptionId = 0;
 //   }
 //   mapIntoObject(arr) {
 //     return arr.reduce((acc, curr) => {
@@ -75,5 +104,22 @@ exports.default = StateApi;
 //   };
 //   getState = () => {
 //     return this.data;
-//   }
+//   };
+//   subscribe = (cb) => {
+//     this.lastSubscriptionId++;
+//     this.subscriptions[this.lastSubscriptionId] = cb;
+//     return this.lastSubscriptionId; /* we return so that we could use it in unsubscribe */
+//   };
+//   /* when component unmount the listener is no longer needed */
+//   unsubscribe = (subscriptionId) => {
+//     delete this.subscriptions[subscriptionId];
+//   };
+//   notifySubscribers = () => {
+//     Object.values(this.subscriptions).forEach(cb => cb())
+//   };
+//   setSearchQuery = (query) => {
+//     /* when we change this only the query updates we need to update the articles but as long as it is in constructor it needs subscription functions */
+//     this.data.query = query;
+//     this.notifySubscribers();
+//   };
 // }

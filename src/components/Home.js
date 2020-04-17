@@ -14,12 +14,22 @@ class Home extends Component {
       store: this.props.store
     };
   }
+
   /* have to read state from store from now on */
   state = this.props.store.getState();
 
-  setSearchQuery = (query) => {
-    this.setState({ query });
+  onStoreChange = () => {
+    this.setState(this.props.store.getState());
   };
+
+  componentDidMount() {
+    this.subscriptionId = this.props.store.subscribe(this.onStoreChange);
+  }
+
+  componentWillUnmount() {
+    this.props.store.unsubscribe(this.subscriptionId);
+  }
+
 
   render() {
     const { articles, query } = this.state;
@@ -31,7 +41,7 @@ class Home extends Component {
       });
     }
     return [
-      <SearchBar key="search-bar" doSearch={this.setSearchQuery}/>,
+      <SearchBar key="search-bar" doSearch={this.props.store.setSearchQuery}/>,
       <ArticleList articles={filteredArticles} key="articles-list" />
     ];
   }
