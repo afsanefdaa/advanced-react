@@ -31,7 +31,8 @@ let StateApi = /*#__PURE__*/function () {
     /* to avoid calling on and on we will call it once */
     this.data = {
       articles: this.mapIntoObject(rawData.data.articles),
-      authors: this.mapIntoObject(rawData.data.authors)
+      authors: this.mapIntoObject(rawData.data.authors),
+      query: ''
     };
   }
 
@@ -52,14 +53,14 @@ let StateApi = /*#__PURE__*/function () {
 exports.default = StateApi;
 
 /* before transpile into pure js the code below */
-
 // export default class StateApi {
 //   /* get the raw data from api */
 //   constructor(rawData) {
 //     /* to avoid calling on and on we will call it once */
 //     this.data = {
 //       articles: this.mapIntoObject(rawData.data.articles),
-//       authors: this.mapIntoObject(rawData.data.authors)
+//       authors: this.mapIntoObject(rawData.data.authors),
+//       query: '',
 //     };
 //   }
 //   mapIntoObject(arr) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import storeProvider from './storeProvider';
 import {
   FlexArticle,
   Title,
@@ -7,9 +8,8 @@ import {
   Description
 } from './styles';
 
-const Article = ({article, store}) => {
-  const author = store.lookupAuthor(article.authorId);
-
+/* the presentational component which handles the showing the data */
+const Article = ({article, author}) => {
   return (
     <FlexArticle>
       <Title>{article.title}</Title>
@@ -24,4 +24,11 @@ const Article = ({article, store}) => {
   );
 };
 
-export default Article;
+function extraProps(store, originalProps) {
+  return {
+    author: store.lookupAuthor(originalProps.article.authorId)
+  };
+}
+
+
+export default storeProvider(extraProps)(Article);

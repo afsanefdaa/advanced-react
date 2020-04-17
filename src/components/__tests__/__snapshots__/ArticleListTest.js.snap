@@ -2,57 +2,27 @@
 
 exports[`snapshot test of article list should render correctly 1`] = `
 <div>
-  <div
-    className="sc-AxjAm buwshB"
-  >
-    <span
-      className="sc-AxirZ cysuWk"
-    >
-      title a
-    </span>
-    <span
-      className="sc-AxiKw dnkZXQ"
-    >
-      date a
-    </span>
-    <div
-      className="sc-AxhCb jtmMmi"
-    >
-      <a>
-        undefined undefined
-      </a>
-    </div>
-    <span
-      className="sc-AxhUy hDqVax"
-    >
-      body a
-    </span>
-  </div>
-  <div
-    className="sc-AxjAm buwshB"
-  >
-    <span
-      className="sc-AxirZ cysuWk"
-    >
-      title b
-    </span>
-    <span
-      className="sc-AxiKw dnkZXQ"
-    >
-      date b
-    </span>
-    <div
-      className="sc-AxhCb jtmMmi"
-    >
-      <a>
-        undefined undefined
-      </a>
-    </div>
-    <span
-      className="sc-AxhUy hDqVax"
-    >
-      body b
-    </span>
-  </div>
+  <ArticleContainer
+    article={
+      Object {
+        "authorId": "a",
+        "body": "body a",
+        "date": "date a",
+        "id": "a",
+        "title": "title a",
+      }
+    }
+  />
+  <ArticleContainer
+    article={
+      Object {
+        "authorId": "b",
+        "body": "body b",
+        "date": "date b",
+        "id": "b",
+        "title": "title b",
+      }
+    }
+  />
 </div>
 `;

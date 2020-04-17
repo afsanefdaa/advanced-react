@@ -1,7 +1,7 @@
 import React from 'react';
 import Article from './Article';
 
-const ArticleList = ({articles, store}) => {
+const ArticleList = ({articles}) => {
   return (
     <div>
       {
@@ -9,7 +9,6 @@ const ArticleList = ({articles, store}) => {
           <Article
             key={item.id}
             article={item}
-            store={store}
           />
         )
       }
