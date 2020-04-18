@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  /* all the folders we want webpack to resolve as its dependencies */
+  /* all the folders  we want webpack to resolve as its dependencies */
   resolve: {
     modules: [
       path.resolve('./src'),
@@ -10,10 +10,21 @@ module.exports = {
     ]
   },
   /* add polyfill to have the es6 codes transpile */
-  entry: ['@babel/polyfill','./src/renderers/dom.js'],
+  entry: {
+    vendor: [
+      '@babel/polyfill',
+      'react',
+      'react-dom',
+      'axios',
+      'lodash.debounce',
+      'lodash.pickby',
+      'styled-components'
+    ],
+    app: ['./src/renderers/dom.js']
+  },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -24,4 +35,12 @@ module.exports = {
       },
     ]
   },
+  optimization: {
+    splitChunks: {
+      chunks (chunk) {
+        // exclude `my-excluded-chunk`
+        return chunk.name !== 'vendor';
+      }
+    }
+  }
 };

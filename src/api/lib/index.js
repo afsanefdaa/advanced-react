@@ -46,18 +46,35 @@ let StateApi = /*#__PURE__*/function () {
       });
     });
 
-    _defineProperty(this, 'setSearchQuery', (query) => {
-      /* when we change this only the query updates we need to update the articles but as long as it is in constructor it needs subscription functions */
-      _this.data.query = query;
+    _defineProperty(this, 'mergedWithState', (stateChange) => {
+      _this.data = { ..._this.data,
+        ...stateChange
+      };
 
       _this.notifySubscribers();
+    });
+
+    _defineProperty(this, 'setSearchQuery', (query) => {
+      /* when we change this only the query updates we need to update the articles but as long as it is in constructor it needs subscription functions */
+      _this.mergedWithState({
+        query: query
+      });
+    });
+
+    _defineProperty(this, 'startClock', () => {
+      setInterval(() => {
+        return _this.mergedWithState({
+          timestamp: new Date()
+        });
+      }, 1000);
     });
 
     /* to avoid calling on and on we will call it once */
     this.data = {
       articles: this.mapIntoObject(rawData.data.articles),
       authors: this.mapIntoObject(rawData.data.authors),
-      query: ''
+      query: '',
+      timestamp: new Date()
     };
     this.subscriptions = {};
     this.lastSubscriptionId = 0;
@@ -88,6 +105,7 @@ exports.default = StateApi;
 //       articles: this.mapIntoObject(rawData.data.articles),
 //       authors: this.mapIntoObject(rawData.data.authors),
 //       query: '',
+//       timestamp: new Date(),
 //     };
 //     this.subscriptions = {};
 //     this.lastSubscriptionId = 0;
@@ -117,9 +135,18 @@ exports.default = StateApi;
 //   notifySubscribers = () => {
 //     Object.values(this.subscriptions).forEach(cb => cb())
 //   };
-//   setSearchQuery = (query) => {
-//     /* when we change this only the query updates we need to update the articles but as long as it is in constructor it needs subscription functions */
-//     this.data.query = query;
+//   mergedWithState = (stateChange) => {
+//     this.data = {
+//       ...this.data,
+//       ...stateChange,
+//     };
 //     this.notifySubscribers();
 //   };
+//   setSearchQuery = (query) => {
+//     /* when we change this only the query updates we need to update the articles but as long as it is in constructor it needs subscription functions */
+//     this.mergedWithState({ query });
+//   };
+//   startClock = () => {
+//     setInterval(() => this.mergedWithState({ timestamp: new Date()}), 1000)
+//   }
 // }

@@ -1,12 +1,13 @@
-import React, { Component, useState, useEffect   } from 'react';
+import React from 'react';
 import debounce from 'lodash.debounce';
+import storeProvider from "./storeProvider";
 
 class SearchBar extends React.Component {
   state = {
     query: ''
   };
 
-  doSearch = debounce(() => this.props.doSearch(this.state.query), 400 );
+  doSearch = debounce(() => this.props.store.setSearchQuery(this.state.query), 400 );
 
   handleSearch = (e) => {
     this.setState({query: e.target.value}, () => { this.doSearch(); });
@@ -40,4 +41,4 @@ class SearchBar extends React.Component {
 //   );
 // };
 
-export default SearchBar;
+export default storeProvider()(SearchBar);

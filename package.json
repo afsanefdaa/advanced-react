@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "NODE_PATH=./src nodemon --exec babel-node src/server.js",
     "webpack": "webpack -wd",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
