@@ -15,6 +15,7 @@ module.exports = {
       '@babel/polyfill',
       'react',
       'react-dom',
+      'prop-types',
       'axios',
       'lodash.debounce',
       'lodash.pickby',
@@ -24,7 +25,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].js'
+    filename: '[name].js',
+    chunkFilename: '[name].js'
   },
   module: {
     rules: [
@@ -35,12 +37,4 @@ module.exports = {
       },
     ]
   },
-  optimization: {
-    splitChunks: {
-      chunks (chunk) {
-        // exclude `my-excluded-chunk`
-        return chunk.name !== 'vendor';
-      }
-    }
-  }
 };
