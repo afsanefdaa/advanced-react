@@ -9,9 +9,12 @@
   "private": true,
   "scripts": {
     "dev": "NODE_PATH=./src nodemon --exec babel-node src/server.js",
+    "prod": "NODE_PATH=./build nodemon build/server.js",
     "webpack": "webpack -wd",
+    "build-webpack": "webpack -p",
     "test": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "build-node": "babel src -d build --copy-files"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
