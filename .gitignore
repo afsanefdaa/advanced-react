@@ -4,3 +4,5 @@ public/*
 yarn-error.log
 coverage
 build/
+.DS_Store
+yarn.lock
